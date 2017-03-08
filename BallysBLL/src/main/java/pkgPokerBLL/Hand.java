@@ -206,7 +206,7 @@ public class Hand {
 	public static boolean isHandTwoPair(Hand h, HandScore hs)
 	{
 		boolean isTwoPair = false;
-		
+	 
 		ArrayList<Card> kickers = new ArrayList<Card>();
 		if ((h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() == h.getCardsInHand()
 				.get(eCardNo.SecondCard.getCardNo()).geteRank())
@@ -215,15 +215,17 @@ public class Hand {
 			isTwoPair = true;
 			hs.setHandStrength(eHandStrength.TwoPair);
 			hs.setHiHand(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank());
+			hs.setLoHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			hs.setKickers(kickers);
 		} 
 		else if ((h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank() == h.getCardsInHand()
-				.get(eCardNo.SecondCard.getCardNo()).geteRank())
-				&& (h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank() == h.getCardsInHand()
-						.get(eCardNo.FourthCard.getCardNo()).geteRank())) {
+				.get(eCardNo.FirstCard.getCardNo()).geteRank())
+				&& (h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank() == h.getCardsInHand()
+						.get(eCardNo.ThirdCard.getCardNo()).geteRank())) {
 			isTwoPair = true;
 			hs.setHandStrength(eHandStrength.TwoPair);
 			hs.setHiHand(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank());
+			hs.setLoHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			hs.setKickers(kickers);
 		}
 		else if ((h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank() == h.getCardsInHand()
@@ -233,6 +235,7 @@ public class Hand {
 			isTwoPair = true;
 			hs.setHandStrength(eHandStrength.TwoPair);
 			hs.setHiHand(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank());
+			hs.setLoHand(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank());
 			hs.setKickers(kickers);
 		}
 		return false;
@@ -321,7 +324,7 @@ public class Hand {
 				&& (h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank() == h.getCardsInHand()
 						.get(eCardNo.FifthCard.getCardNo()).geteRank())
 				&& (h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank().getiRankNbr() == 14)
-				&& (h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank().getiRankNbr() != (8 & 14)))
+				&& (h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank().getiRankNbr() != 14))
 		{
 			isAcesAndEights = true;
 			hs.setHandStrength(eHandStrength.AcesAndEights);
